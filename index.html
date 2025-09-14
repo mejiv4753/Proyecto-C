@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Canciones</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class=></i> Gracias por decirme el nombre de uno de tus grupos favoritos ese día...</h1>
+            <p class="subtitle">(Lamento si ya enfade con esto ;-;)</p>
+        </header>
+        
+        <div class="songs-container" id="songs-container">
+        </div>
+            
+        <div class="pagination">
+            <button class="page-btn" id="prev-page">
+                <i class="fas fa-chevron-left"></i> Anterior
+            </button>
+            <div class="page-info">Página <span id="current-page"> 1 </span> de <span id="total-pages"> 1 </span></div>
+            <button class="page-btn" id="next-page">
+                Siguiente <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="context-modal" id="context-modal">
+        <div class="context-content">
+            <button class="close-btn" id="close-context">&times;</button>
+            <h3 class="context-title" id="context-song-title"></h3>
+            <p class="context-text" id="context-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
