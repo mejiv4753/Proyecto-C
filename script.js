@@ -346,7 +346,7 @@ const songsData = [
         artist: "Latin Mafia",         // pon el artista correcto
         audioSrc: "Patadas de ahogado.mp3",
         thumb: "https://i1.sndcdn.com/artworks-w1WDWsSRoS1b-0-t500x500.jpg",
-        context: "De nuevo con los abrazos, es increible la fácilidad con la que puedo darte uno o dos, incluso más si me los pides, creo que se nota mucho que no me quiero despegar cuando nos hemos abrazado (perdón), pero siento paz, tranquilidad, el ruido de mi cabeza para y todo se vuelve menos malo.",
+        context: "De nuevo con los abrazos, es increible la fácilidad con la que puedo darte uno o dos, incluso más si me los pides, creo que se nota mucho que no me quiero despegar cuando nos hemos abrazado (perdón), pero siento paz, tranquilidad, el ruido de mi cabeza para y todo se vuelve menos malo. Pd: Apapachame significa abrazar con el alma y el corazón",
         lyrics: [
             "Tú hueles a vainilla, te quiero",
             "Dale, abrázame otro rato",
@@ -392,12 +392,17 @@ const songsData = [
             79   // Regando las flores que de viejos nos veo fumando
         ]
     },
-    {   id: 7,
+    {
+        id: 7,
         title: "Continuo Atardecer",
         artist: "Latin Mafia",
         audioSrc: "Continuo Atardecer.mp3", // asegúrate de subirlo a tu repo
         thumb: "https://s.mxmcdn.net/images-storage/albums2/8/3/0/3/6/9/63963038_500_500.jpg",
-       context: "Para terminar, esta canción me recuerda a ti por el hecho de todo lo que has enfrentado y el como has salido adelante, siendo fuerte y formando tu carácter, sé que esto es solo una etapa más que te servirá de experiencia, una que te dará el coraje para seguir construyendo a la grandiosa mujer que ya eres. Ya enfadé mucho con la música de Latín, pero la neta los vatos escribieron las canciones con el corazón en las manos y así como ellos te escribo todo esto, gracias por estar y convertir mis peores días en los mejores, gracias por enseñarme que divertirse no es malo; en ti encontré la paz y tranquilidad que necesitaba, pues, como ya mencioné muchas veces, contigo la vida, la energía, las emociones, se sienten diferentes. Si algún día tienes que irte, lo entenderé, pero no me quedaré esperando tu regreso, Iré a buscarte, aunque te vayas a Japón o a la Antártida, porque tú eres esa persona por la que sí vale la pena hacer todo lo posible. Uno de mis deseos de cumpleaños fue que seas feliz, y de corazón, espero que se cumpla.",
+        context: ` Finalmente esta canción me recuerda a ti por el hecho de todo lo que has enfrentado y el cómo has salido adelante, sé que esto es solo una etapa más que te servirá de experiencia, una que te dará el coraje para seguir construyendo a la grandiosa mujer que ya eres.
+
+Tal vez ya enfadé mucho con la música de Latín, pero la neta los vatos escribieron las canciones con el corazón y así como ellos, escribo todo esto, gracias por estar y convertir mis peores días en los mejores, gracias por enseñarme que divertirse no es malo y justo por eso no encuentro mejor palabra que serendipia, que significa encontrar algo valioso de forma accidental, es decir sin buscarlo y tú eres eso valioso, ya que en ti encontré la paz y tranquilidad que necesitaba, pues, como ya mencioné muchas veces, contigo la vida, la energía, las emociones, se sienten diferentes.
+
+Si algún día tienes que irte, lo entenderé, pero no me quedaré esperando tu regreso, Iré a buscarte, aunque te vayas a Japón o a la Antártida, porque tú eres esa persona por la que sí vale la pena hacer todo lo posible.`,
         lyrics: [
             "Continuo atardecer",
             "Corre por su piel, yeah",
@@ -463,15 +468,15 @@ let state = {
 //     renderSongs();
 //     setupEventListeners();
 //     updatePaginationInfo();
-    
+
 //     // Configurar modal de contexto
 //     const modal = document.getElementById('context-modal');
 //     const closeBtn = document.getElementById('close-context');
-    
+
 //     closeBtn.addEventListener('click', () => {
 //         modal.style.display = 'none';
 //     });
-    
+
 //     window.addEventListener('click', (event) => {
 //         if (event.target === modal) {
 //             modal.style.display = 'none';
@@ -484,15 +489,15 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSongs();
     setupEventListeners();
     updatePaginationInfo();
-    
+
     // Configurar modal de contexto
     const modal = document.getElementById('context-modal');
     const closeBtn = document.getElementById('close-context');
-    
+
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
     });
-    
+
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
             modal.style.display = 'none';
@@ -571,10 +576,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderSongs() {
     const container = document.getElementById('songs-container');
     container.innerHTML = '';
-    
+
     // Verificar si es la última página
     const isLastPage = state.currentPage === state.totalPages;
-    
+
     // Aplicar clase especial para la última página
     if (isLastPage) {
         container.classList.add('last-page-layout');
@@ -589,7 +594,7 @@ function renderSongs() {
         const card = document.createElement('div');
         card.classList.add('song-card');
         card.id = `song-${song.id}`;
-        
+
         // Para la última página, solo mostrar la primera canción en el layout especial
         if (isLastPage && song.id === songsData[songsData.length - 1].id) {
             card.innerHTML = `
@@ -629,7 +634,7 @@ function renderSongs() {
                     </div>
                 </div>
             `;
-            
+
             // Configurar event listeners para el audio en la última página
             setTimeout(() => {
                 const audioEl = document.getElementById(`audio-${song.id}`);
@@ -647,7 +652,7 @@ function renderSongs() {
                     audioEl.addEventListener('ended', () => resetPlayback(song.id));
                 }
             }, 0);
-            
+
             // Crear el panel de contexto para la última página
             const contextPanel = document.createElement('div');
             contextPanel.classList.add('last-page-context');
@@ -655,7 +660,7 @@ function renderSongs() {
                 <h3>¿Por qué "${song.title}"?</h3>
                 <p>${song.context}</p>
             `;
-            
+
             container.appendChild(card);
             container.appendChild(contextPanel);
         } else {
@@ -714,7 +719,7 @@ function renderSongs() {
             container.appendChild(card);
         }
     });
-    
+
     // Asegurarse de que solo hay una canción en la última página
     if (isLastPage) {
         state.songsPerPage = 1;
@@ -820,14 +825,14 @@ function formatTime(seconds) {
 function showContext(songId) {
     const song = songsData.find(s => s.id === songId);
     if (!song) return;
-    
+
     const modal = document.getElementById('context-modal');
     const title = document.getElementById('context-song-title');
     const text = document.getElementById('context-text');
-    
+
     title.textContent = `${song.title} - ${song.artist}`;
     text.textContent = song.context;
-    
+
     modal.style.display = 'flex';
 }
 
